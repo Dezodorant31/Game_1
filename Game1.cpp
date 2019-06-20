@@ -7,7 +7,7 @@
 
 //using namespace std;
 
-////Размеры поля
+//Размеры поля
 const int rowsCount = 10;
 const int columnsCount = 15;
 
