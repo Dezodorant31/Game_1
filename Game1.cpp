@@ -7,7 +7,7 @@
 
 //using namespace std;
 
-//Размеры поля
+////Р Р°Р·РјРµСЂС‹ РїРѕР»СЏ
 const int rowsCount = 10;
 const int columnsCount = 15;
 
@@ -44,25 +44,25 @@ const unsigned char levelData1[rowsCount][columnsCount + 1] = {
 	"#1#     x ##*!#",
 	"###############" };
 
-//Логика//////////////////////////////////////////////////////
+//Г‹Г®ГЈГЁГЄГ //////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
-HANDLE consoleHandle = 0;//переменная для получения дескриптора
-//вывода консоли
-bool isGameActive = true;//отвечает за продолжение игрового цикла после ввода
+HANDLE consoleHandle = 0;//ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г Гї Г¤Г«Гї ГЇГ®Г«ГіГ·ГҐГ­ГЁГї Г¤ГҐГ±ГЄГ°ГЁГЇГІГ®Г°Г 
+//ГўГ»ГўГ®Г¤Г  ГЄГ®Г­Г±Г®Г«ГЁ
+bool isGameActive = true;//Г®ГІГўГҐГ·Г ГҐГІ Г§Г  ГЇГ°Г®Г¤Г®Г«Г¦ГҐГ­ГЁГҐ ГЁГЈГ°Г®ГўГ®ГЈГ® Г¶ГЁГЄГ«Г  ГЇГ®Г±Г«ГҐ ГўГўГ®Г¤Г 
 unsigned char levelData[rowsCount][columnsCount];
 int heroRow = 0;
-int heroColumn = 0;//координаты игрока
-int crystalNumber = 0;   //количество собранных кристаллов
-int crystalOnLevel;      //количество кристаллов на уровне
+int heroColumn = 0;//ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГЁГЈГ°Г®ГЄГ 
+int crystalNumber = 0;   //ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г®ГЎГ°Г Г­Г­Г»Гµ ГЄГ°ГЁГ±ГІГ Г«Г«Г®Гў
+int crystalOnLevel;      //ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ°ГЁГ±ГІГ Г«Г«Г®Гў Г­Г  ГіГ°Г®ГўГ­ГҐ
 
-void setupSystem()//Настройки системы
+void setupSystem()//ГЌГ Г±ГІГ°Г®Г©ГЄГЁ Г±ГЁГ±ГІГҐГ¬Г»
 {
 	srand(time(0));
 
-	consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);//запись дескриптора
+	consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);//Г§Г ГЇГЁГ±Гј Г¤ГҐГ±ГЄГ°ГЁГЇГІГ®Г°Г 
 }
 
-void initialise()//задание стартовых значений для игры
+void initialise()//Г§Г Г¤Г Г­ГЁГҐ Г±ГІГ Г°ГІГ®ГўГ»Гµ Г§Г­Г Г·ГҐГ­ГЁГ© Г¤Г«Гї ГЁГЈГ°Г»
 {
 	crystalOnLevel = 0;
 
@@ -105,7 +105,7 @@ void initialise()//задание стартовых значений для игры
 	}
 }
 
-void initialise2()//задание стартовых значений для второй игры
+void initialise2()//Г§Г Г¤Г Г­ГЁГҐ Г±ГІГ Г°ГІГ®ГўГ»Гµ Г§Г­Г Г·ГҐГ­ГЁГ© Г¤Г«Гї ГўГІГ®Г°Г®Г© ГЁГЈГ°Г»
 {
 	crystalOnLevel = 3;
 
@@ -158,7 +158,7 @@ void initialise2()//задание стартовых значений для второй игры
 	}
 }
 
-void render()//графический вывод
+void render()//ГЈГ°Г ГґГЁГ·ГҐГ±ГЄГЁГ© ГўГ»ГўГ®Г¤
 {
 	COORD cursorCoord;
 	cursorCoord.X = 0;
@@ -238,11 +238,11 @@ void render()//графический вывод
 
 }
 
-void moveHeroTo(int row, int column)//движение героя
+void moveHeroTo(int row, int column)//Г¤ГўГЁГ¦ГҐГ­ГЁГҐ ГЈГҐГ°Г®Гї
 {
 	unsigned char destinationCell = levelData[row][column];
-	bool canMoveToCell = false;//переменная для отслеживания возможности
-	//перемещения на соседнюю ячейку
+	bool canMoveToCell = false;//ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г Гї Г¤Г«Гї Г®ГІГ±Г«ГҐГ¦ГЁГўГ Г­ГЁГї ГўГ®Г§Г¬Г®Г¦Г­Г®Г±ГІГЁ
+	//ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГї Г­Г  Г±Г®Г±ГҐГ¤Г­ГѕГѕ ГїГ·ГҐГ©ГЄГі
 
 	switch (destinationCell)
 	{
@@ -266,12 +266,12 @@ void moveHeroTo(int row, int column)//движение героя
 	{
 		int heroDirectionR = row - heroRow;
 		int heroDirectionC = column - heroColumn;
-		//направление движения героя
-		if (levelData[row + heroDirectionR][column + heroDirectionC] == ' ')        //проверяем, есть ли пустое место за коробкой
+		//Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г¤ГўГЁГ¦ГҐГ­ГЁГї ГЈГҐГ°Г®Гї
+		if (levelData[row + heroDirectionR][column + heroDirectionC] == ' ')        //ГЇГ°Г®ГўГҐГ°ГїГҐГ¬, ГҐГ±ГІГј Г«ГЁ ГЇГіГ±ГІГ®ГҐ Г¬ГҐГ±ГІГ® Г§Г  ГЄГ®Г°Г®ГЎГЄГ®Г©
 		{
 			canMoveToCell = true;
-			//levelData[row][column] = ' ';     //стираем предыдущий значок коробки; исключил, после добавления кейса для Кристаллов
-			levelData[row + heroDirectionR][column + heroDirectionC] = symbolBox;       //ставим коробку на новые координаты
+			//levelData[row][column] = ' ';     //Г±ГІГЁГ°Г ГҐГ¬ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГЁГ© Г§Г­Г Г·Г®ГЄ ГЄГ®Г°Г®ГЎГЄГЁ; ГЁГ±ГЄГ«ГѕГ·ГЁГ«, ГЇГ®Г±Г«ГҐ Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї ГЄГҐГ©Г±Г  Г¤Г«Гї ГЉГ°ГЁГ±ГІГ Г«Г«Г®Гў
+			levelData[row + heroDirectionR][column + heroDirectionC] = symbolBox;       //Г±ГІГ ГўГЁГ¬ ГЄГ®Г°Г®ГЎГЄГі Г­Г  Г­Г®ГўГ»ГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ»
 		}
 	}
 	case symbolCrystal:
@@ -279,7 +279,7 @@ void moveHeroTo(int row, int column)//движение героя
 		int heroDirectionR = row - heroRow;
 		int heroDirectionC = column - heroColumn;
 
-		if (levelData[row][column] - levelData[heroRow][heroColumn] <= levelData[1][1])     //проверям, есть ли объект в радиусе одной клетки от героя
+		if (levelData[row][column] - levelData[heroRow][heroColumn] <= levelData[1][1])     //ГЇГ°Г®ГўГҐГ°ГїГ¬, ГҐГ±ГІГј Г«ГЁ Г®ГЎГєГҐГЄГІ Гў Г°Г Г¤ГЁГіГ±ГҐ Г®Г¤Г­Г®Г© ГЄГ«ГҐГІГЄГЁ Г®ГІ ГЈГҐГ°Г®Гї
 		{
 			canMoveToCell = true;
 			levelData[row][column] = ' ';
@@ -291,16 +291,16 @@ void moveHeroTo(int row, int column)//движение героя
 
 	if (canMoveToCell)
 	{
-		levelData[heroRow][heroColumn] = ' ';       //стираем предыдущий значок героя
+		levelData[heroRow][heroColumn] = ' ';       //Г±ГІГЁГ°Г ГҐГ¬ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГЁГ© Г§Г­Г Г·Г®ГЄ ГЈГҐГ°Г®Гї
 
-		heroRow = row;                              //записываем новые координаты
+		heroRow = row;                              //Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ Г­Г®ГўГ»ГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ»
 		heroColumn = column;
 
 		levelData[heroRow][heroColumn] = symbolHero;
 	}
 }
 
-void update()//реализация игровой логики
+void update()//Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГї ГЁГЈГ°Г®ГўГ®Г© Г«Г®ГЈГЁГЄГЁ
 {
 	unsigned char inputChar = _getch();
 	inputChar = tolower(inputChar);
@@ -335,7 +335,7 @@ void update()//реализация игровой логики
 	}
 }
 
-void shutdown()//конец игры
+void shutdown()//ГЄГ®Г­ГҐГ¶ ГЁГЈГ°Г»
 {
 	system("cls");
 	printf("\nPress any key to continue...");
@@ -360,7 +360,7 @@ int main()
 	{
 		render();
 		update();
-		if (crystalOnLevel == crystalNumber) //открываем дверь, если герой собрал все кристаллы
+		if (crystalOnLevel == crystalNumber) //Г®ГІГЄГ°Г»ГўГ ГҐГ¬ Г¤ГўГҐГ°Гј, ГҐГ±Г«ГЁ ГЈГҐГ°Г®Г© Г±Г®ГЎГ°Г Г« ГўГ±ГҐ ГЄГ°ГЁГ±ГІГ Г«Г«Г»
 		{
 			for (int r = 0; r < rowsCount; r++)
 			{
