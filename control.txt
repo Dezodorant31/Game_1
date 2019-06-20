@@ -1,0 +1,32 @@
+void update()
+{
+	int inputInt = _getch();
+	switch (inputInt)
+	{
+	case 72:
+	{
+				moveHeroTo(heroRow - 1, heroColumn);
+				break;
+	}
+	case 75:
+	{
+				moveHeroTo(heroRow, heroColumn - 1);
+				break;
+	}
+	case 80:
+	{
+				moveHeroTo(heroRow + 1, heroColumn);
+				break;
+	}
+	case 77:
+	{
+				moveHeroTo(heroRow, heroColumn + 1);
+				break;
+	}
+	case 'r':
+	{
+				initialise();
+				break;
+	}
+	}
+}
